@@ -30,18 +30,22 @@ public class BoardModel {
     }
 
     public TileModel leftOf(TileModel orig) {
+        // TODO
         return null;
     }
 
     public TileModel upFrom(TileModel orig) {
+        // TODO
         return null;
     }
 
     public TileModel downFrom(TileModel orig) {
+        // TODO
         return null;
     }
 
     public TileModel rightOf(TileModel orig) {
+        // TODO
         return null;
     }
 }

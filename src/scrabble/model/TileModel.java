@@ -61,7 +61,7 @@ public class TileModel {
         return occupantLetterModel.get() == null;
     }
 
-    public void removeLetter() {
+    void removeLetter() {
         if (isEmpty()) {
             System.err.printf("there's no letter here row=%d col=%d%n", row, col);
             return;
@@ -69,11 +69,13 @@ public class TileModel {
         occupantLetterModel.set(null);
     }
 
-    boolean nonEmpty() {
+    public boolean nonEmpty() {
         return !isEmpty();
     }
 
-    int calculateScore() {
+    public int calculateScore() {
+        // TODO calculateScore
+        System.err.println("TODO calculateScore");
         return 0;
     }
 }

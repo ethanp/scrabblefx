@@ -3,6 +3,7 @@ package scrabble.model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
+import scrabble.model.scoring.Scorer;
 
 import java.util.ArrayList;
 import java.util.List;
