@@ -68,4 +68,12 @@ public class TileModel {
         }
         occupantLetterModel.set(null);
     }
+
+    boolean nonEmpty() {
+        return !isEmpty();
+    }
+
+    int calculateScore() {
+        return 0;
+    }
 }

@@ -17,6 +17,8 @@ public class ViewController {
     @FXML void makeMovePressed(ActionEvent event) {
         System.out.println("make move pressed " + event);
         ScrabbleGame game = scrabbleScene.getScrabbleGame();
+        int score = game.scorePendingTiles();
+        System.out.println("score was " + score);
         game.confirmPendingTiles();
         game.getCurrentPlayer().refillRackFromBag();
         game.nextPlayersTurn();

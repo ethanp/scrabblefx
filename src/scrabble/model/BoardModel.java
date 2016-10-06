@@ -28,4 +28,20 @@ public class BoardModel {
     public TileModel getSquare(int row, int col) {
         return tileModels[row][col];
     }
+
+    public TileModel leftOf(TileModel orig) {
+        return null;
+    }
+
+    public TileModel upFrom(TileModel orig) {
+        return null;
+    }
+
+    public TileModel downFrom(TileModel orig) {
+        return null;
+    }
+
+    public TileModel rightOf(TileModel orig) {
+        return null;
+    }
 }

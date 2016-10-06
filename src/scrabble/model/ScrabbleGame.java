@@ -75,4 +75,11 @@ public class ScrabbleGame {
     public void addPlayerChangeListener(ChangeListener<Player> listener) {
         currentPlayer.addListener(listener);
     }
+
+    public int scorePendingTiles() {
+        int ret = new Scorer(tilesPendingConfirmation, boardModel).scorePendingTiles();
+        // TODO scoring is not implemented yet
+        System.err.println("TODO scoring is not implemented yet");
+        return ret;
+    }
 }
