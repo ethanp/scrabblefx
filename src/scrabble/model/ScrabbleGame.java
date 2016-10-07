@@ -3,6 +3,9 @@ package scrabble.model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import scrabble.model.scoring.Scorer;
 
 import java.util.ArrayList;
@@ -12,7 +15,7 @@ import java.util.List;
  * 9/29/16 9:21 PM
  */
 public class ScrabbleGame {
-    private final List<Player> players = new ArrayList<>();
+    private final ObservableList<Player> players = FXCollections.observableArrayList();
     private final LetterBag letterBag = new LetterBag();
     private final BoardModel boardModel = new BoardModel(this);
     /**
@@ -23,11 +26,11 @@ public class ScrabbleGame {
     private ObjectProperty<Player> currentPlayer = new SimpleObjectProperty<>();
 
     public ScrabbleGame() {
-        addPlayer("1st player");
-        addPlayer("2nd player");
+        addPlayer("Player 1");
+        addPlayer("Player 2");
     }
 
-    private void addPlayer(String name) {
+    public void addPlayer(String name) {
         Player player = new Player(name, this);
         players.add(player);
         if (currentPlayer.get() == null) {
@@ -77,10 +80,15 @@ public class ScrabbleGame {
         currentPlayer.addListener(listener);
     }
 
+    public void addPlayerListChangeListener(ListChangeListener<Player> listener) {
+        players.addListener(listener);
+    }
+
     public int scorePendingTiles() {
-        int ret = new Scorer(tilesPendingConfirmation, boardModel).scorePendingTiles();
-        // TODO scoring is not implemented yet
-        System.err.println("TODO scoring is not implemented yet");
-        return ret;
+        return new Scorer(tilesPendingConfirmation, boardModel).scorePendingTiles();
+    }
+
+    public ObservableList<Player> getPlayers() {
+        return players;
     }
 }

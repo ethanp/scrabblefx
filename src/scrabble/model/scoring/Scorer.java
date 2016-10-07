@@ -30,13 +30,13 @@ public class Scorer {
     }
 
     private int scoreIncidentalWords() {
-        Direction oppositeDirection = direction.opposite();
+        Direction opp = direction.opposite();
         int incidentalAcc = 0;
-        for (TileModel pendingTile : pendingTiles) {
-            boolean extendsBack = oppositeDirection.before(pendingTile).nonEmpty();
-            boolean extendsForward = oppositeDirection.after(pendingTile).nonEmpty();
+        for (TileModel pending : pendingTiles) {
+            boolean extendsBack = opp.before(pending) != null && opp.before(pending).nonEmpty();
+            boolean extendsForward = opp.after(pending) != null && opp.after(pending).nonEmpty();
             if (extendsBack || extendsForward) {
-                incidentalAcc += oppositeDirection.scoreWordFromPending(pendingTile);
+                incidentalAcc += opp.scoreWordFromPending(pending);
             }
         }
         return incidentalAcc;

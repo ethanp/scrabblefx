@@ -37,7 +37,7 @@ public class ScrabbleScene extends Scene {
         ((BorderPane) getRoot()).setBottom(rackView);
     }
 
-    ScrabbleGame getScrabbleGame() {
+    public ScrabbleGame getScrabbleGame() {
         return scrabbleGame;
     }
 }

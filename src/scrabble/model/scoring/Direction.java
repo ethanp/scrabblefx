@@ -27,7 +27,7 @@ class Direction {
     /** add up the scores of all the tiles in the word */
     private int wordScore(TileModel currentTile) {
         int scoreAccumulator = currentTile.calculateScore();
-        while (after(currentTile).nonEmpty()) {
+        while (after(currentTile) != null && after(currentTile).nonEmpty()) {
             currentTile = after(currentTile);
             scoreAccumulator += currentTile.calculateScore();
         }
@@ -35,7 +35,7 @@ class Direction {
     }
 
     private TileModel topLeftWordLetter(TileModel topLeft) {
-        while (before(topLeft).nonEmpty()) {
+        while (before(topLeft) != null && before(topLeft).nonEmpty()) {
             topLeft = before(topLeft);
         }
         return topLeft;

@@ -14,7 +14,6 @@ public class TileModel {
     private final Bonus bonus;
     private final BoardModel boardModel;
     private ObjectProperty<LetterModel> occupantLetterModel = new SimpleObjectProperty<>(null);
-    private boolean empty;
 
     public TileModel(BoardModel boardModel, Bonus bonus, int row, int col) {
         this.boardModel = boardModel;
@@ -27,10 +26,6 @@ public class TileModel {
         return boardModel;
     }
 
-    public Bonus getBonus() {
-        return bonus;
-    }
-
     public Color getColor() {
         if (!isEmpty()) {
             return Color.LIGHTYELLOW;
@@ -39,6 +34,10 @@ public class TileModel {
         } else {
             return Color.BURLYWOOD;
         }
+    }
+
+    public boolean isEmpty() {
+        return occupantLetterModel.get() == null;
     }
 
     public void addLetterChangeListener(ChangeListener<LetterModel> listener) {
@@ -57,10 +56,6 @@ public class TileModel {
         occupantLetterModel.set(letterModel);
     }
 
-    public boolean isEmpty() {
-        return occupantLetterModel.get() == null;
-    }
-
     void removeLetter() {
         if (isEmpty()) {
             System.err.printf("there's no letter here row=%d col=%d%n", row, col);
@@ -74,8 +69,17 @@ public class TileModel {
     }
 
     public int calculateScore() {
-        // TODO calculateScore
-        System.err.println("TODO calculateScore");
-        return 0;
+        if (occupantLetterModel.get() == null) {
+            return 0;
+        }
+        int letterMultiplier = 1;
+        if (getBonus() != null && !getBonus().word) {
+            letterMultiplier = getBonus().factor;
+        }
+        return occupantLetterModel.get().points*letterMultiplier;
+    }
+
+    Bonus getBonus() {
+        return bonus;
     }
 }

@@ -21,31 +21,27 @@ public class BoardModel {
         return game;
     }
 
-    public void placeLetter(LetterModel letterModel, int row, int col) {
+    void placeLetter(LetterModel letterModel, int row, int col) {
         tileModels[row][col].placeLetter(letterModel);
+    }
+
+    public TileModel leftOf(TileModel orig) {
+        return orig.col == 0 ? null : getSquare(orig.row, orig.col - 1);
     }
 
     public TileModel getSquare(int row, int col) {
         return tileModels[row][col];
     }
 
-    public TileModel leftOf(TileModel orig) {
-        // TODO
-        return null;
-    }
-
     public TileModel upFrom(TileModel orig) {
-        // TODO
-        return null;
+        return orig.row == 0 ? null : getSquare(orig.row - 1, orig.col);
     }
 
     public TileModel downFrom(TileModel orig) {
-        // TODO
-        return null;
+        return orig.row == 0 ? null : getSquare(orig.row + 1, orig.col);
     }
 
     public TileModel rightOf(TileModel orig) {
-        // TODO
-        return null;
+        return orig.col == 0 ? null : getSquare(orig.row, orig.col + 1);
     }
 }
